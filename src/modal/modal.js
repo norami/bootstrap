@@ -505,7 +505,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
         }
 
         appendToElement.addClass(modalBodyClass);
-        $animate.enter($compile(angularDomEl)(modal.scope), appendToElement);
+        $animate.enter($compile(angularDomEl)(modal.scope), appendToElement, modal.appendToLast ? previousTopOpenedModal && previousTopOpenedModal.value.modalDomEl : null);
 
         openedWindows.top().value.modalDomEl = angularDomEl;
         openedWindows.top().value.modalOpener = modalOpener;
@@ -739,7 +739,8 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
                   windowTemplateUrl: modalOptions.windowTemplateUrl,
                   size: modalOptions.size,
                   openedClass: modalOptions.openedClass,
-                  appendTo: modalOptions.appendTo
+                  appendTo: modalOptions.appendTo,
+                  appendToLast: modalOptions.appendToLast
                 });
                 modalOpenedDeferred.resolve(true);
 
