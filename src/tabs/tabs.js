@@ -77,7 +77,7 @@ angular.module('ui.bootstrap.tabs', [])
   };
 
   $scope.$watch('tabset.active', function(val) {
-    if (angular.isNumber(val) && val !== oldIndex) {
+    if (val !== oldIndex) {
       ctrl.select(findTabIndex(val));
     }
   });
